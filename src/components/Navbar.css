@@ -1,0 +1,98 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
+
+/* .name{
+    font-weight: 500;
+    font-size: 30px;
+    text-decoration: underline;
+    text-decoration: overline;
+    transition: 0.4s;
+    font-family: 'Sacramento', cursive;
+}
+
+.name:hover{
+    font-size: 31px;
+} */
+
+.logo{
+    background-color: #fff;
+    border-radius: 60px;
+    height: 25px;
+    margin: 0 1px;
+}
+
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    height: 90px;
+    z-index: 10;
+   
+}
+.header-bg{
+    background-color: rgba(0,0,0,0.85);
+    transition: 0.5s;
+    color: white;
+}
+
+.nav-menu{
+    display: flex;
+}
+
+.nav-menu li{
+    padding: 0 1rem;
+}
+
+.nav-menu li a{
+   font-size: 1.2rem;
+   font-weight: 500;
+}
+
+.hamburger{
+    display: none;
+}
+
+
+@media(max-width:786px) {
+    .nav-menu{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0,0,0,0.9);
+        position: absolute;
+        top: 0;
+        left: -100%;
+        z-index: -3;
+        transition: 0.3s;
+
+    }
+
+    .nav-menu.active{
+        left: 0;
+    }
+
+    .nav-menu li{
+        padding: 1rem 0;
+    }
+
+    .nav-menu li a{
+       font-size: 2rem;
+    }
+    .hamburger{
+        display: initial;
+        cursor: pointer;
+    }
+    .logo{
+        background-color: #fff;
+        border-radius: 100px;
+        height: 20px;
+        margin: 0 1px;
+    }
+}

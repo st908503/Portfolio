@@ -1,0 +1,67 @@
+
+
+
+ 
+
+.about{
+    width: 100%;
+    margin: 3rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+
+.buttons > a{
+margin: 0 5px;
+}
+
+.about .leftSection{
+    text-align: center;
+    margin: auto;
+    padding: 1rem;
+    max-width: 450px;
+}
+
+.me1{
+    border-radius: 50%;
+    height: 150px;
+    margin-top: 10px;
+}
+
+.about .leftSection p{
+    margin: 1.2rem 0;
+}
+
+.about .rightSection{
+    max-width: 700px;
+}
+
+.rightSection .img-container{
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    position: relative;
+    align-items: center;
+    text-align: center;
+}
+
+.rightSection .img{
+    max-width: 90%;
+    border: 1px solid #333;
+
+}
+
+.rightSection .top{
+    grid-column: 1 /span 8; 
+    grid-row: 1;
+    padding-top: 20%;
+    z-index: 6;
+}
+
+.rightSection .bottom{
+    grid-column: 4 /span 8; 
+    grid-row: 1;
+    z-index: 5;
+}
