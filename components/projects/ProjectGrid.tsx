@@ -18,6 +18,7 @@ export function ProjectGrid() {
           delay={index * 80}
           className="relative overflow-hidden"
         />
+        
       ))}
     </div>
   );

@@ -12,8 +12,8 @@ export function SkillCategory({ category }: Props) {
         {category.name}
       </p>
       <div className="flex flex-wrap gap-2">
-        {category.items.map((item) => (
-          <SkillPill key={item} label={item} />
+        {category.items.map(({ label, icon }) => (
+          <SkillPill key={label} label={label} icon={icon} />
         ))}
       </div>
     </div>

@@ -13,11 +13,13 @@ export function PageContainer({ children, className }: PageContainerProps) {
   return (
     <div
       className={cn(
-        "w-full flex flex-col px-6 py-10 md:px-8 lg:px-10", // Removed mx-auto max-w-5xl
-        // Full-width theme-aware background
+        // Full width with responsive padding only
+        "w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16",
+        // Subtle theme-aware backgrounds
         theme === 'dark' 
-          ? 'bg-zinc-950/50 backdrop-blur-sm' 
-          : 'bg-zinc-50/50 backdrop-blur-sm',
+          ? 'bg-zinc-950/80' 
+          : 'bg-zinc-50/80',
+        "backdrop-blur-sm",
         className
       )}
     >
