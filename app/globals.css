@@ -1,0 +1,27 @@
+/* app/globals.css (or styles/globals.css if that’s your path) */
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  /* do not hard-code bg/text if you want dark mode variants */
+  /* let layout.tsx decide colors via Tailwind classes */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+/* Typography defaults */
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
