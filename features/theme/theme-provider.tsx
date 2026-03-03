@@ -1,6 +1,16 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+import { useScrollReveal } from "@/features/animations/useScrollReveal";
+import { cn } from '@/lib/utils/cn';
+import { profile } from "@/lib/data/profile";
+
+type SectionProps = React.PropsWithChildren<{
+  id?: string;
+  title?: string;
+  eyebrow?: string;
+  className?: string;
+}>;
 
 type Theme = "light" | "dark";
 
@@ -11,7 +21,7 @@ type ThemeContextValue = {
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
+function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
 
   // Initial load: read from localStorage or system preference
@@ -60,10 +70,47 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useThemeContext() {
+function useThemeContext() {
   const ctx = useContext(ThemeContext);
   if (!ctx) {
     throw new Error("useThemeContext must be used within ThemeProvider");
   }
   return ctx;
 }
+
+export function Section({ id, title, eyebrow, className, children }: SectionProps) {
+  const { ref: headerRef, visible: headerVisible } = useScrollReveal();
+
+  return (
+    <section 
+      id={id} 
+      className={cn("space-y-4 py-10", className)}
+    >
+      {(eyebrow || title) && (
+        <header 
+          ref={headerRef}
+          className={cn(
+            "space-y-2 transition-all duration-800 ease-out",
+            headerVisible 
+              ? "translate-y-0 opacity-100" 
+              : "-translate-y-6 opacity-0"
+          )}
+        >
+          {eyebrow && (
+            <p className="text-xs font-semibold uppercase tracking-wide text-emerald-400 dark:text-emerald-300">
+              {eyebrow}
+            </p>
+          )}
+          {title && (
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-50 md:text-3xl dark:text-zinc-100">
+              {title}
+            </h2>
+          )}
+        </header>
+      )}
+      {children}
+    </section>
+  );
+}
+
+export { ThemeProvider, useThemeContext };

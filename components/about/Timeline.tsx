@@ -1,4 +1,10 @@
+"use client";
+
+import { useThemeContext } from "@/features/theme/theme-provider";
+
 export function Timeline() {
+  const { theme } = useThemeContext();
+
   const items = [
     {
       period: "2023 – Present",
@@ -20,12 +26,51 @@ export function Timeline() {
   ];
 
   return (
-    <ol className="mt-8 space-y-4 text-sm text-zinc-300">
+    <ol className={`
+      mt-8 space-y-4 text-sm 
+      ${theme === 'dark' 
+        ? 'text-zinc-300' 
+        : 'text-zinc-600'
+      }
+    `}>
       {items.map((item) => (
-        <li key={item.title} className="border-l border-zinc-800 pl-4">
-          <p className="text-xs text-zinc-500">{item.period}</p>
-          <p className="text-sm font-medium text-zinc-50">{item.title}</p>
-          <p className="text-xs text-zinc-300">{item.body}</p>
+        <li 
+          key={item.title} 
+          className={`
+            border-l pl-4
+            ${theme === 'dark' 
+              ? 'border-zinc-800' 
+              : 'border-zinc-200'
+            }
+          `}
+        >
+          <p className={`
+            text-xs 
+            ${theme === 'dark' 
+              ? 'text-zinc-500' 
+              : 'text-zinc-500'
+            }
+          `}>
+            {item.period}
+          </p>
+          <p className={`
+            text-sm font-medium 
+            ${theme === 'dark' 
+              ? 'text-zinc-50' 
+              : 'text-zinc-900'
+            }
+          `}>
+            {item.title}
+          </p>
+          <p className={`
+            text-xs 
+            ${theme === 'dark' 
+              ? 'text-zinc-300' 
+              : 'text-zinc-600'
+            }
+          `}>
+            {item.body}
+          </p>
         </li>
       ))}
     </ol>

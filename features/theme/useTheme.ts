@@ -1,4 +1,5 @@
-// features/theme/useTheme.ts
+"use client";
+
 import { useThemeContext } from "./theme-provider";
 
 export function useTheme() {

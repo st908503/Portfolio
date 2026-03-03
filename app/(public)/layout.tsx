@@ -1,4 +1,3 @@
-// app/layout.tsx  (GLOBAL)
 import '../globals.css'
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -21,14 +20,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" suppressHydrationWarning className="h-full scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-zinc-950 text-zinc-50 antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} h-screen antialiased flex flex-col font-sans`}
+        suppressHydrationWarning
       >
         <ThemeProvider>
-          <div className="flex min-h-screen flex-col">
+          <div className="flex flex-col bg-zinc-950 text-zinc-50 dark:bg-zinc-50 dark:text-zinc-950 h-full">
             <Header />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 flex">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>

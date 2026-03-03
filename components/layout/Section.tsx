@@ -1,6 +1,7 @@
 "use client";
 
 import { useScrollReveal } from "@/features/animations/useScrollReveal";
+import { useThemeContext } from "@/features/theme/theme-provider";
 import { cn } from '@/lib/utils/cn';
 import { profile } from "@/lib/data/profile";
 
@@ -12,6 +13,7 @@ type SectionProps = React.PropsWithChildren<{
 }>;
 
 export function Section({ id, title, eyebrow, className, children }: SectionProps) {
+  const { theme } = useThemeContext();
   const { ref: headerRef, visible: headerVisible } = useScrollReveal();
 
   return (
@@ -30,12 +32,22 @@ export function Section({ id, title, eyebrow, className, children }: SectionProp
           )}
         >
           {eyebrow && (
-            <p className="text-xs font-semibold uppercase tracking-wide text-emerald-400">
+            <p className={cn(
+              "text-xs font-semibold uppercase tracking-wide",
+              theme === 'dark' 
+                ? "text-emerald-400" 
+                : "text-emerald-500"
+            )}>
               {eyebrow}
             </p>
           )}
           {title && (
-            <h2 className="text-2xl font-semibold tracking-tight text-zinc-50 md:text-3xl">
+            <h2 className={cn(
+              "text-2xl font-semibold tracking-tight md:text-3xl",
+              theme === 'dark' 
+                ? "text-zinc-50" 
+                : "text-zinc-900"
+            )}>
               {title}
             </h2>
           )}
@@ -48,8 +60,8 @@ export function Section({ id, title, eyebrow, className, children }: SectionProp
 
 // Updated HeroSection using the new Section component
 export function HeroSection() {
+  const { theme } = useThemeContext();
   const { ref: badgeRef, visible: badgeVisible } = useScrollReveal<HTMLDivElement>();
-  const { ref: titleRef, visible: titleVisible } = useScrollReveal<HTMLHeadingElement>();
   const { ref: summaryRef, visible: summaryVisible } = useScrollReveal<HTMLParagraphElement>();
   const { ref: locationRef, visible: locationVisible } = useScrollReveal<HTMLParagraphElement>();
 
@@ -65,9 +77,18 @@ export function HeroSection() {
         ref={badgeRef}
         className={cn(
           "inline-flex w-fit items-center gap-2 rounded-full border px-4 py-1 text-xs font-medium transition-all duration-700 ease-out",
-          badgeVisible
-            ? "border-emerald-400 bg-emerald-400/10 text-emerald-300 shadow-lg shadow-emerald-500/25 translate-y-0 opacity-100"
-            : "border-zinc-800 bg-zinc-900/60 text-zinc-300 shadow-none -translate-y-4 opacity-0"
+          {
+            // Dark mode
+            'border-emerald-400 bg-emerald-400/10 text-emerald-300 shadow-lg shadow-emerald-500/25 translate-y-0 opacity-100':
+              badgeVisible && theme === 'dark',
+            'border-zinc-800 bg-zinc-900/60 text-zinc-300 shadow-none -translate-y-4 opacity-0':
+              !badgeVisible && theme === 'dark',
+            // Light mode  
+            'border-emerald-500 bg-emerald-50 text-emerald-700 shadow-lg shadow-emerald-400/25 translate-y-0 opacity-100':
+              badgeVisible && theme === 'light',
+            'border-zinc-200 bg-zinc-100/60 text-zinc-600 shadow-none -translate-y-4 opacity-0':
+              !badgeVisible && theme === 'light',
+          }
         )}
       >
         <span
@@ -85,6 +106,10 @@ export function HeroSection() {
           ref={summaryRef}
           className={cn(
             "text-lg transition-all duration-800 ease-out sm:text-xl",
+            {
+              'text-zinc-200': theme === 'dark',
+              'text-zinc-700': theme === 'light',
+            },
             summaryVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
           )}
         >
@@ -94,7 +119,11 @@ export function HeroSection() {
         <p
           ref={locationRef}
           className={cn(
-            "text-sm transition-all duration-800 ease-out text-zinc-400",
+            "text-sm transition-all duration-800 ease-out",
+            {
+              'text-zinc-400': theme === 'dark',
+              'text-zinc-600': theme === 'light',
+            },
             locationVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
           )}
         >
