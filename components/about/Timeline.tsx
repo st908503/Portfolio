@@ -25,7 +25,13 @@ export function Timeline() {
       body:
         "Built secure financial form systems and implemented rule-based validation workflows for banking clients. Strengthened expertise in structured frontend engineering and data-driven UI systems.",
     },
-   
+    {
+      period: "2017 – 2021",
+      title:
+        "B.Tech (Computer Science) · GL Bajaj Institute of Technology & Management",
+      body:
+        "Graduated with 78.24%. Developed strong fundamentals in data structures, algorithms, and system design principles.",
+    },
   ];
 
   return (

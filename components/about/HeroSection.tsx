@@ -44,21 +44,21 @@ export function HeroSection() {
   } as const;
 
   return (
-    <section
-      ref={ref}
-      className={cn(
-      "relative overflow-hidden py-20 md:py-24 text-center",
-        isDark
-          ? "bg-gradient-to-br from-zinc-950 via-zinc-900 to-black"
-          : "bg-gradient-to-br from-white via-zinc-50 to-emerald-50/40",
-      )}
-    >
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate={controls}
-        className="relative z-10 container mx-auto px-6"
-      >
+   <section
+  ref={ref}
+  className={cn(
+    "relative overflow-hidden py-20 md:py-24 text-center w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]", // Full viewport width
+    isDark
+      ? "bg-gradient-to-br from-zinc-950 via-zinc-900 to-black"
+      : "bg-gradient-to-br from-white via-zinc-50 to-emerald-50/40",
+  )}
+>
+  <motion.div
+    variants={containerVariants}
+    initial="hidden"
+    animate={controls}
+    className="relative z-10 w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16" // Content padding only
+  >
         {/* Profile Image */}
         <motion.div
           variants={itemVariants}
