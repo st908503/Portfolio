@@ -3,22 +3,28 @@ import type { Project } from "@/types/project";
 export const projects: Project[] = [
   {
     title: "UPI-Based Payment & Merchant Dashboard System",
-    subtitle: "End-to-end merchant-side payments and dashboard",
+    subtitle:
+      "Full-stack fintech ecosystem with merchant app, admin dashboard & secure payment workflows",
     description:
-      "Complete merchant payment processing system with UPI integration, React admin dashboard, and companion React Native app.",
+      "Architected and developed a complete merchant-side fintech ecosystem including UPI deep linking, QR-based payments, settlement tracking, reconciliation flows, and RBAC-driven dashboards. The system supports real-time transaction processing, secure JWT authentication, webhook integrations, and mobile-first merchant operations.",
     period: "2023 – 2024",
     highlights: [
-      "UPI deep linking/QR, transaction history, settlements, chargebacks.",
-      "JWT/Firebase auth, role-based access, real-time status updates.",
+      "Implemented UPI deep linking & QR-based payment initiation with real-time transaction status updates.",
+      "Designed RBAC-based Admin, Super-Admin & Merchant dashboards with protected route guards.",
+      "Integrated secure JWT/Firebase authentication and webhook-based transaction verification.",
+      "Built companion React Native merchant app with optimized bundle size and performance tuning."
     ],
     tech: [
       "React",
       "React Native",
+      "TypeScript",
       "Redux Toolkit",
       "Tailwind CSS",
       "Node.js",
       "REST APIs",
       "JWT",
+      "Webhooks",
+      "Firebase"
     ],
   },
 ];

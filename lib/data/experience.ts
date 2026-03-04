@@ -15,7 +15,7 @@ export const experience: ExperienceItem[] = [
       "Built complete fintech ecosystem (Admin, Super-Admin, Merchant Apps) using micro-frontend architecture and reusable UI modules, improving deployment speed and maintainability.",
       "Implemented critical fintech compliance workflows — KYC verification, merchant onboarding, fraud detection, payment reconciliation, transaction analytics — using advanced caching, rate limiting & throttling.",
       "Optimized React Native bundle size by 35% using code splitting, lazy loading, and dynamic imports, reducing startup time from 3.2s to 2.1s.",
-      "Ensured enterprise-grade security using RBI compliance, PCI-DSS, JWT/OAuth, secure API gateway practices, and end-to-end encryption."
+      "Ensured enterprise-grade security using RBI compliance, PCI-DSS, JWT, secure API gateway practices, and end-to-end encryption."
     ],
     tech: [
       "React",

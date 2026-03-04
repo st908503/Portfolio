@@ -28,7 +28,7 @@ export function TechSummary() {
           >
             <p className={cn(
               "text-xs font-semibold uppercase tracking-wide",
-              theme === 'dark' ? 'text-zinc-400' : 'text-zinc-500'
+              theme === 'dark' ? 'text-white' : 'text-black'
             )}>
               {category.name}
             </p>

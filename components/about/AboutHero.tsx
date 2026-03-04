@@ -7,26 +7,40 @@ export function AboutHero() {
   const { theme } = useThemeContext();
 
   return (
-    <div className="space-y-4">
-      <h1 className={`
-        text-2xl font-semibold tracking-tight md:text-3xl
-        ${theme === 'dark' 
-          ? 'text-zinc-50' 
-          : 'text-zinc-900'
-        }
-      `}>
-        About {profile.name}
-      </h1>
-      <p className={`
-        max-w-2xl text-sm 
-        ${theme === 'dark' 
-          ? 'text-zinc-300' 
-          : 'text-zinc-600'
-        }
-      `}>
-        I'm a frontend engineer focused on React, React Native, and fintech ecosystems.
-        I enjoy building secure payment flows, RBAC-driven dashboards, and high-performance
-        apps that handle real money and real users at scale.
+    <div className="space-y-6">
+    
+
+      <p
+        className={`max-w-3xl text-sm leading-relaxed ${
+          theme === "dark" ? "text-zinc-300" : "text-zinc-600"
+        }`}
+      >
+        My journey began with building secure financial form systems and
+        enterprise-grade interfaces, where I developed strong fundamentals in
+        structured frontend engineering and data-driven validation workflows.
+      </p>
+
+      <p
+        className={`max-w-3xl text-sm leading-relaxed ${
+          theme === "dark" ? "text-zinc-300" : "text-zinc-600"
+        }`}
+      >
+        Over time, I transitioned into large-scale enterprise applications,
+        focusing on reusable component systems, performance optimization,
+        and production debugging. This foundation later evolved into building
+        complete fintech ecosystems — including merchant apps, admin panels,
+        and payment processing systems.
+      </p>
+
+      <p
+        className={`max-w-3xl text-sm leading-relaxed ${
+          theme === "dark" ? "text-zinc-300" : "text-zinc-600"
+        }`}
+      >
+        Today, I work on architecting end-to-end fintech products involving UPI
+        integrations, BBPS flows, KYC workflows, settlement systems, webhook
+        handling, and secure authentication layers — ensuring scalability,
+        compliance, and high availability across web and mobile platforms.
       </p>
     </div>
   );
