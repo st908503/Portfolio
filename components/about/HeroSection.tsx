@@ -44,21 +44,21 @@ export function HeroSection() {
   } as const;
 
   return (
-   <section
-  ref={ref}
-  className={cn(
-    "relative overflow-hidden py-20 md:py-24 text-center w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]", // Full viewport width
-    isDark
-      ? "bg-gradient-to-br from-zinc-950 via-zinc-900 to-black"
-      : "bg-gradient-to-br from-white via-zinc-50 to-emerald-50/40",
-  )}
->
-  <motion.div
-    variants={containerVariants}
-    initial="hidden"
-    animate={controls}
-    className="relative z-10 w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16" // Content padding only
-  >
+    <section
+      ref={ref}
+      className={cn(
+        "relative overflow-hidden py-20 md:py-24 text-center w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]",
+        isDark
+          ? "bg-gradient-to-br from-zinc-950 via-zinc-900 to-black"
+          : "bg-gradient-to-br from-white via-zinc-50 to-emerald-50/40",
+      )}
+    >
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate={controls}
+        className="relative z-10 w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16"
+      >
         {/* Profile Image */}
         <motion.div
           variants={itemVariants}
@@ -76,17 +76,16 @@ export function HeroSection() {
 
         {/* Main Heading */}
         <motion.h1
-  variants={itemVariants}
-  className={cn(
-    "text-xl font-black tracking-tight sm:text-2xl md:text-3xl tracking-wide sm:tracking-wider",
-    isDark
-      ? "bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent"
-      : "bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent",
-  )}
->
-  Frontend Developer
-</motion.h1>
-
+          variants={itemVariants}
+          className={cn(
+            "text-xl font-black tracking-tight sm:text-2xl md:text-3xl tracking-wide sm:tracking-wider",
+            isDark
+              ? "bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent"
+              : "bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent",
+          )}
+        >
+          Frontend Developer
+        </motion.h1>
 
         {/* Subheading */}
         <motion.p
@@ -100,7 +99,7 @@ export function HeroSection() {
           high-performance Mobile applications.
         </motion.p>
 
-        {/* Short Description */}
+        {/* Description */}
         <motion.p
           variants={itemVariants}
           className={cn(
@@ -113,14 +112,13 @@ export function HeroSection() {
           authentication, payment workflows, and production reliability.
         </motion.p>
 
-        {/* Impact Stats */}
+        {/* Stats */}
         <motion.div
           variants={containerVariants}
           className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3"
         >
           {[
             { value: totalExp + "+", label: "Years Experience" },
-            // { value: "UPI & Payments", label: "Fintech Systems" },
             { value: "Web & Mobile", label: "Cross-Platform Systems" },
             { value: "High Performance", label: "Optimized Apps" },
           ].map((stat) => (
@@ -157,13 +155,13 @@ export function HeroSection() {
         {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
-          className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Link
             href="/about"
             className="rounded-xl bg-emerald-600 px-6 py-3 font-semibold text-white transition hover:bg-emerald-700"
           >
-           Professional Overview
+            Professional Overview
           </Link>
 
           <Link
@@ -177,6 +175,21 @@ export function HeroSection() {
           >
             Contact Me
           </Link>
+
+          {/* Resume Button */}
+          <a
+            href="/Shashank-Tripathi-Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              "rounded-xl px-6 py-3 font-semibold transition border",
+              isDark
+                ? "border-emerald-500 text-emerald-400 hover:bg-emerald-500/10"
+                : "border-emerald-600 text-emerald-600 hover:bg-emerald-50"
+            )}
+          >
+            View Resume
+          </a>
         </motion.div>
       </motion.div>
     </section>
