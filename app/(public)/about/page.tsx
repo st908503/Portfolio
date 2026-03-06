@@ -18,7 +18,7 @@ export default function AboutPage() {
             isDark ? "text-zinc-300" : "text-zinc-600"
           }`}
         >
-          I’m a fintech-focused frontend engineer with 4+ years of experience
+          I’m a frontend developer with 4+ years of experience
           building secure, scalable applications across web and mobile platforms.
           My work centers around architecting high-performance systems for
           real-world financial products — including UPI integrations, merchant
