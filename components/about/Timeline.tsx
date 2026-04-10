@@ -9,7 +9,7 @@ export function Timeline() {
   const items = [
     {
       period: "Oct 2023 – Present",
-      title: "Frontend Developer · Cash Friend Fintech (Noida)",
+      title: "Frontend Developer · MobilePe Fintech Private Limited (Delhi)",
       body:
         "Leading development of merchant payment systems including UPI and BBPS flows. Architected React Native merchant applications, implemented RBAC-based dashboards, optimized bundle size by 35%, reduced production crashes by 25%, and ensured PCI-DSS/RBI-compliant security standards.",
     },

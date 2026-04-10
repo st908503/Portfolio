@@ -1,9 +1,8 @@
 import type { ExperienceItem } from "@/types/experience";
 
 export const experience: ExperienceItem[] = [
-  // Cash Friend Fintech Private Limited
   {
-    company: "Cash Friend Fintech Private Limited",
+    company: "MobilePe Fintech Private Limited",
     role: "Frontend Developer",
     location: "Noida, India",
     start: "Oct 2023",
