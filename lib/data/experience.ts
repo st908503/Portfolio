@@ -41,7 +41,7 @@ export const experience: ExperienceItem[] = [
     role: "Software Engineer",
     location: "Bangalore, India",
     start: "Aug 2021",
-    end: "Oct 2023",
+    end: "Nov 2022",
     bullets: [
       "Designed reusable frontend modules — authentication, modal systems, shared components — improving code reusability, UI consistency, and team development velocity.",
       "Improved UX and performance using DOM optimization and form validations, reducing major UI defects by 30%.",
@@ -65,10 +65,10 @@ export const experience: ExperienceItem[] = [
   // Newgen Software
   {
     company: "Newgen Software",
-    role: "Software Engineer",
+    role: "Software Engineer(Intern)",
     location: "Noida, India",
     start: "Apr 2021",
-    end: "Aug 2021",
+    end: "July 2021",
     bullets: [
       "Built secure, high-accuracy ICICI Bank financial forms using validation workflows, DOM manipulation, and data-driven rules, enhancing data integrity for critical financial processes.",
       "Automated large-scale data operations using OmniExtract for data transformation, reducing manual effort and improving operational accuracy.",

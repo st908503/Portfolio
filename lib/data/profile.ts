@@ -4,7 +4,7 @@ export const profile = {
   location: "Noida, India",
   summary:
     "Frontend Developer with 4+ years of experience building secure, scalable fintech applications using React and React Native.",
-  availability: "Available for Frontend Developer roles(React, React Native)",
+  availability: "Available for Frontend Developer roles",
    phone: "+918319298374",
   email: "caspersky700@gmail.com",
   linkedin: "https://www.linkedin.com/in/shashank-tripathi-702b041ba/",

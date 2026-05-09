@@ -6,7 +6,7 @@ import { getTotalExperience } from "@/lib/utils/getTotalExperience";
 
 export function HighlightsGrid() {
   const { theme } = useThemeContext();
-  const totalExp = getTotalExperience("2021-04-01");
+  const totalExp = getTotalExperience("2021-04-05");
 
   return (
     <section className={cn(

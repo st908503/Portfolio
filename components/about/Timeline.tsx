@@ -9,19 +9,19 @@ export function Timeline() {
   const items = [
     {
       period: "Oct 2023 – Present",
-      title: "Frontend Developer · MobilePe Fintech Private Limited (Delhi)",
+      title: "Frontend Developer · MobilePe Fintech Private Limited (Noida)",
       body:
         "Leading development of merchant payment systems including UPI and BBPS flows. Architected React Native merchant applications, implemented RBAC-based dashboards, optimized bundle size by 35%, reduced production crashes by 25%, and ensured PCI-DSS/RBI-compliant security standards.",
     },
     {
-      period: "Aug 2021 – Oct 2023",
+      period: "Aug 2021 – Nov 2022",
       title: "Software Engineer · Tata Consultancy Services (Bangalore)",
       body:
         "Designed reusable authentication systems, shared UI modules, and optimized frontend performance for enterprise web applications. Improved UI stability and reduced major defects by 30% through DOM optimization, debugging, and production issue resolution.",
     },
     {
-      period: "Apr 2021 – Aug 2021",
-      title: "Software Engineer · Newgen Software (Noida)",
+      period: "Apr 2021 – Jul 2021",
+      title: "Software Engineer(Intern) · Newgen Software (Noida)",
       body:
         "Built secure financial form systems and implemented rule-based validation workflows for banking clients. Strengthened expertise in structured frontend engineering and data-driven UI systems.",
     },

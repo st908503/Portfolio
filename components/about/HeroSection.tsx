@@ -10,7 +10,7 @@ import { useEffect, useRef } from "react";
 
 export function HeroSection() {
   const { theme } = useThemeContext();
-  const totalExp = getTotalExperience("2021-08-12");
+  const totalExp = getTotalExperience("2021-04-05");
   const isDark = theme === "dark";
 
   const ref = useRef(null);
@@ -95,8 +95,8 @@ export function HeroSection() {
             isDark ? "text-zinc-300" : "text-zinc-700",
           )}
         >
-          {totalExp}+ years building secure UPI systems, Merchant and Admin dashboards &
-          high-performance Mobile applications.
+       {parseFloat(totalExp) - 1}+ years building scalable web applications, mobile apps,
+          admin dashboards, and high-performance user experiences.
         </motion.p>
 
         {/* Description */}
@@ -107,9 +107,10 @@ export function HeroSection() {
             isDark ? "text-zinc-400" : "text-zinc-600",
           )}
         >
-          Specialized in architecting scalable ecosystems across web and mobile
-          platforms — focusing on performance engineering, RBAC systems, secure
-          authentication, payment workflows, and production reliability.
+          Specialized in developing modern cross-platform ecosystems with a
+          strong focus on scalable architecture, performance optimization,
+          reusable component systems, authentication workflows, role-based
+          access control, and production-grade reliability.
         </motion.p>
 
         {/* Stats */}
@@ -118,7 +119,7 @@ export function HeroSection() {
           className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3"
         >
           {[
-            { value: totalExp + "+", label: "Years Experience" },
+            { value:   parseFloat(totalExp) - 1 + "+", label: "Years Experience" },
             { value: "Web & Mobile", label: "Cross-Platform Systems" },
             { value: "High Performance", label: "Optimized Apps" },
           ].map((stat) => (
