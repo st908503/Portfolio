@@ -4,11 +4,11 @@ import { useThemeContext } from "@/features/theme/theme-provider";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { Section } from "@/components/layout/Section";
 import { ExperienceTimeline } from "@/components/experience/ExperienceTimeline";
-
+import { getTotalExperience } from "@/lib/utils/getTotalExperience";
 export default function ExperiencePage() {
   const { theme } = useThemeContext();
   const isDark = theme === "dark";
-
+ const totalExp = getTotalExperience();
   return (
     <PageContainer>
       <Section title="Experience" eyebrow="Professional Journey">
@@ -17,7 +17,7 @@ export default function ExperiencePage() {
             isDark ? "text-zinc-300" : "text-zinc-600"
           }`}
         >
-          4+ years of experience building secure, scalable frontend systems
+          {totalExp}+ years of experience building secure, scalable frontend systems
           across fintech and enterprise environments. My work spans UPI payment
           integrations, merchant dashboards, RBAC-based architectures, mobile
           performance optimization, and compliance-driven financial workflows.

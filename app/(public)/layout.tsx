@@ -9,7 +9,7 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Shashank Tripathi | Frontend & React Native Engineer",
+  title: "Shashank Tripathi | Frontend & React Native Developer",
   description:
     "Portfolio of Shashank Tripathi, Frontend Developer specializing in React, React Native, and fintech payment systems.",
 };

@@ -10,7 +10,7 @@ import { useEffect, useRef } from "react";
 
 export function HeroSection() {
   const { theme } = useThemeContext();
-  const totalExp = getTotalExperience("2021-04-05");
+  const totalExp = getTotalExperience();
   const isDark = theme === "dark";
 
   const ref = useRef(null);
@@ -95,7 +95,7 @@ export function HeroSection() {
             isDark ? "text-zinc-300" : "text-zinc-700",
           )}
         >
-       {parseFloat(totalExp) - 1}+ years building scalable web applications, mobile apps,
+       {totalExp}+ years building scalable web applications, mobile apps,
           admin dashboards, and high-performance user experiences.
         </motion.p>
 
@@ -118,11 +118,11 @@ export function HeroSection() {
           variants={containerVariants}
           className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3"
         >
-          {[
-            { value:   parseFloat(totalExp) - 1 + "+", label: "Years Experience" },
-            { value: "Web & Mobile", label: "Cross-Platform Systems" },
-            { value: "High Performance", label: "Optimized Apps" },
-          ].map((stat) => (
+        {[
+  { value: `${totalExp}+`, label: "Years Experience" },
+  { value: "Web & Mobile", label: "Cross-Platform Systems" },
+  { value: "High Performance", label: "Optimized Apps" },
+].map((stat) => (
             <motion.div
               key={stat.label}
               variants={itemVariants}

@@ -1,12 +1,13 @@
+import { getTotalExperience } from "@/lib/utils/getTotalExperience";
+
 export const profile = {
   name: "Shashank Tripathi",
   title: "Frontend Developer (React | React Native)",
   location: "Noida, India",
-  summary:
-    "Frontend Developer with 4+ years of experience building secure, scalable fintech applications using React and React Native.",
+  summary: `Frontend Developer with ${getTotalExperience()}+ years of experience building secure, scalable fintech applications using React and React Native.`,
   availability: "Available for Frontend Developer roles",
-   phone: "+918319298374",
+  phone: "+918319298374",
   email: "caspersky700@gmail.com",
   linkedin: "https://www.linkedin.com/in/shashank-tripathi-702b041ba/",
-  github:"https://github.com/st908503"
+  github: "https://github.com/st908503",
 };
