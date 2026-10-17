@@ -35,13 +35,15 @@ To add a personal project, add an entry to `lib/data/projects.ts` with a unique 
 
 ## Resume asset
 
-The supplied `public/Shashank_Tripathi_Resume.pdf` is the current source. All resume links use `public/resume.pdf`, an exact copy of the source. The sync script automatically detects the source filename: keep one source PDF in `public/` alongside the generated `resume.pdf`. Replace that source PDF and run:
+The supplied `public/Shashank_Tripathi_Resume.pdf` is the preferred source. All resume links use `public/resume.pdf`, an exact copy of that source. Older PDFs can remain in `public/` without blocking deployment. If the preferred source is absent, the sync script uses a single differently named source, or preserves an existing valid `resume.pdf` when no source can be selected unambiguously. Replace the preferred source PDF and run:
 
 ```sh
 npm run resume:sync
 ```
 
 Development and production builds both synchronize it automatically. The original resume content is preserved.
+
+Run the resume deployment regression checks with `node --test scripts/sync-resume.test.mjs`.
 
 ## Contact and deployment configuration
 
