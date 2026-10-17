@@ -1,4 +1,5 @@
 import type { SkillCategory } from "@/types/skill";
+<<<<<<< HEAD
 import {
   // Languages
   Code2,
@@ -50,19 +51,18 @@ import {
   Grid3X3,
   Hash,
 } from "lucide-react";
+=======
+import { Code2, Layers3, Database, Gauge, Network, Wrench, Sparkles } from "lucide-react";
+>>>>>>> eaacee3 (updated resume)
 
 export const skills: SkillCategory[] = [
   {
-    name: "Languages",
-    items: [
-      { label: "JavaScript (ES6+)", icon: Code2 },
-      { label: "TypeScript", icon: Braces },
-      { label: "HTML5", icon: Code },
-      { label: "CSS3", icon: Palette },
-    ],
+    name: "Frontend & mobile",
+    items: ["React.js", "TypeScript", "JavaScript (ES6+)", "Next.js", "React Native", "HTML5", "CSS3", "Tailwind CSS", "Material UI"].map(label => ({ label, icon: Code2 })),
   },
 
   {
+<<<<<<< HEAD
     name: "Frontend Technologies",
     items: [
       { label: "React.js", icon: Square },
@@ -90,9 +90,14 @@ export const skills: SkillCategory[] = [
       { label: "File Uploads", icon: HardDrive },
       { label: "Reusable Widgets", icon: Layout },
     ],
+=======
+    name: "State & architecture",
+    items: ["Redux Toolkit", "React Query", "Context API", "Custom Hooks", "Reusable Components", "DTO Mapping", "Feature-Based Architecture", "Caching"].map(label => ({ label, icon: Layers3 })),
+>>>>>>> eaacee3 (updated resume)
   },
 
   {
+<<<<<<< HEAD
     name: "Backend Integration",
     items: [
       { label: "REST APIs", icon: Network },
@@ -104,9 +109,14 @@ export const skills: SkillCategory[] = [
       { label: "Logging & Monitoring", icon: FileText },
       { label: "Node.js", icon: Server },
     ],
+=======
+    name: "Backend & APIs",
+    items: ["Node.js", "Express.js", "REST APIs", "JWT", "OAuth", "Webhooks", "RBAC"].map(label => ({ label, icon: Network })),
+>>>>>>> eaacee3 (updated resume)
   },
 
   {
+<<<<<<< HEAD
     name: "Performance & Optimization",
     items: [
       { label: "Lazy Loading", icon: HardDrive },
@@ -129,19 +139,19 @@ export const skills: SkillCategory[] = [
       { label: "Jira", icon: CheckCircle2 },
       { label: "CI/CD", icon: GitFork },
     ],
+=======
+    name: "Databases & infrastructure",
+    items: ["MongoDB", "Mongoose", "MySQL", "PostgreSQL", "Redis", "Kafka", "Docker"].map(label => ({ label, icon: Database })),
+>>>>>>> eaacee3 (updated resume)
   },
 
   {
-    name: "Testing & Debugging",
-    items: [
-      { label: "Chrome DevTools", icon: Bug },
-      { label: "Postman", icon: Send },
-      { label: "Jest", icon: PackageCheck },
-      { label: "Production Debugging", icon: HardDrive },
-    ],
+    name: "Performance & testing",
+    items: ["Code Splitting", "Lazy Loading", "Rendering Optimization", "Jest", "React Testing Library", "Firebase Crashlytics"].map(label => ({ label, icon: Gauge })),
   },
 
   {
+<<<<<<< HEAD
     name: "Security",
     items: [
       { label: "JWT Authentication", icon: KeySquare },
@@ -149,9 +159,14 @@ export const skills: SkillCategory[] = [
       { label: "Protected Routes", icon: Shield },
       { label: "Role-Based Access Control (RBAC)", icon: Lock },
     ],
+=======
+    name: "AI integration & development",
+    items: ["LLM Integration", "Prompt Engineering", "RAG Fundamentals", "AI-Assisted Coding & Debugging"].map(label => ({ label, icon: Sparkles })),
+>>>>>>> eaacee3 (updated resume)
   },
 
   {
+<<<<<<< HEAD
     name: "Computer Science Fundamentals",
     items: [
       { label: "Data Structures & Algorithms", icon: Database },
@@ -162,5 +177,9 @@ export const skills: SkillCategory[] = [
       { label: "Hashing", icon: Hash },
       { label: "Time & Space Complexity", icon: Database },
     ],
+=======
+    name: "Tools & delivery",
+    items: ["Git", "GitLab", "GitHub", "Postman", "Jira", "Swagger", "CI/CD"].map(label => ({ label, icon: Wrench })),
+>>>>>>> eaacee3 (updated resume)
   },
 ];

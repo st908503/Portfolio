@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 
 import { useThemeContext } from "@/features/theme/theme-provider";
@@ -104,3 +105,7 @@ export function Timeline() {
     </div>
   );
 }
+=======
+import { ExperienceList } from "@/components/portfolio/Sections";
+export function Timeline() { return <ExperienceList full />; }
+>>>>>>> eaacee3 (updated resume)

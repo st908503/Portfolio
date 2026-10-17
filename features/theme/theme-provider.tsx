@@ -1,116 +1,26 @@
 "use client";
-
-import { createContext, useContext, useEffect, useState } from "react";
-import { useScrollReveal } from "@/features/animations/useScrollReveal";
-import { cn } from '@/lib/utils/cn';
-import { profile } from "@/lib/data/profile";
-
-type SectionProps = React.PropsWithChildren<{
-  id?: string;
-  title?: string;
-  eyebrow?: string;
-  className?: string;
-}>;
-
+import { createContext, useContext, useSyncExternalStore } from "react";
 type Theme = "light" | "dark";
-
-type ThemeContextValue = {
-  theme: Theme;
-  toggleTheme: () => void;
+const ThemeContext = createContext<{ theme: Theme; toggleTheme: () => void } | undefined>(undefined);
+const subscribe = (callback: () => void) => {
+  window.addEventListener("portfolio-theme", callback);
+  window.addEventListener("storage", callback);
+  return () => { window.removeEventListener("portfolio-theme", callback); window.removeEventListener("storage", callback); };
 };
-
-const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
-
-function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
-
-  // Initial load: read from localStorage or system preference
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const stored = window.localStorage.getItem("theme") as Theme | null;
-
-    let nextTheme: Theme;
-    if (stored === "light" || stored === "dark") {
-      nextTheme = stored;
-    } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      nextTheme = prefersDark ? "dark" : "light";
-    }
-
-    setTheme(nextTheme);
-    if (nextTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
-
-  // Whenever theme changes, sync DOM + localStorage
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-
-    window.localStorage.setItem("theme", theme);
-  }, [theme]);
-
+const getSnapshot = (): Theme => document.documentElement.classList.contains("dark") ? "dark" : "light";
+const getServerSnapshot = (): Theme => "light";
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   function toggleTheme() {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    const next = getSnapshot() === "dark" ? "light" : "dark";
+    document.documentElement.classList.toggle("dark", next === "dark");
+    try { localStorage.setItem("portfolio-theme", next); } catch { /* Storage is optional. */ }
+    window.dispatchEvent(new Event("portfolio-theme"));
   }
-
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 }
-
-function useThemeContext() {
-  const ctx = useContext(ThemeContext);
-  if (!ctx) {
-    throw new Error("useThemeContext must be used within ThemeProvider");
-  }
-  return ctx;
+export function useThemeContext() {
+  const context = useContext(ThemeContext);
+  if (!context) throw new Error("ThemeProvider is required");
+  return context;
 }
-
-export function Section({ id, title, eyebrow, className, children }: SectionProps) {
-  const { ref: headerRef, visible: headerVisible } = useScrollReveal();
-
-  return (
-    <section 
-      id={id} 
-      className={cn("space-y-4 py-10", className)}
-    >
-      {(eyebrow || title) && (
-        <header 
-          ref={headerRef}
-          className={cn(
-            "space-y-2 transition-all duration-800 ease-out",
-            headerVisible 
-              ? "translate-y-0 opacity-100" 
-              : "-translate-y-6 opacity-0"
-          )}
-        >
-          {eyebrow && (
-            <p className="text-xs font-semibold uppercase tracking-wide text-emerald-400 dark:text-emerald-300">
-              {eyebrow}
-            </p>
-          )}
-          {title && (
-            <h2 className="text-2xl font-semibold tracking-tight text-zinc-50 md:text-3xl dark:text-zinc-100">
-              {title}
-            </h2>
-          )}
-        </header>
-      )}
-      {children}
-    </section>
-  );
-}
-
-export { ThemeProvider, useThemeContext };

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 
 import Image from "next/image";
@@ -196,3 +197,6 @@ export function HeroSection() {
     </section>
   );
 }
+=======
+export { Hero as HeroSection } from "@/components/portfolio/Sections";
+>>>>>>> eaacee3 (updated resume)

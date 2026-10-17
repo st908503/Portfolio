@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shashank Tripathi — Portfolio
 
-## Getting Started
+A resume-led portfolio built with Next.js 16, React 19, TypeScript, and Tailwind CSS. The design uses white, graphite, a restrained blue accent, locally bundled Inter typography, and restrained motion. Body text is larger throughout the site, with responsive layouts and clearly separated content. Light and dark themes, mobile navigation, and reduced-motion preferences are supported.
 
-First, run the development server:
+## Run locally
 
-```bash
+```sh
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. For a production preview:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Development uses Webpack to avoid the local Turbopack cache and concurrent manifest issues observed during verification. Production builds use the default Next.js compiler and include TypeScript validation. Fonts are bundled locally; no Google Fonts request is needed.
 
-## Learn More
+## Update content
 
-To learn more about Next.js, take a look at the following resources:
+Content follows the latest resume: Senior Technical Consultant at EY India (June 2026–present), Full Stack Developer at MobilePe (October 2023–June 2026), TCS, and Newgen. The profile is based in New Delhi. The previous 35% bundle-size and 30% defect metrics have been removed; the current resume supports a contribution to 25% fewer application crashes at MobilePe.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `lib/data/profile.ts`: contact information, education, and resume path.
+- `lib/data/experience.ts`: employment history and achievements.
+- `lib/data/skills.ts`: grouped skills.
+- `lib/data/projects.ts`: project collection. Entries generate cards, filters, and detail pages automatically.
+- `lib/constants/blogs.ts`: existing engineering notes.
+- `app/globals.css`: colors, layout, motion, and responsive styles.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The four initial project entries summarize professional contributions described in the supplied resume. Workflow illustrations are conceptual, and no public product demos or repositories are invented.
 
-## Deploy on Vercel
+To add a personal project, add an entry to `lib/data/projects.ts` with a unique `slug`, `kind: "personal"`, a `category` of `"Web"` or `"Mobile"`, a `visual` of `"government"`, `"platform"`, `"mobile"`, or `"enterprise"`, plus the remaining fields from `types/project.ts`. Optional `link` and `repo` URLs appear on the project detail page. The future-projects placeholder disappears when the first personal project is added.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Resume asset
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The supplied `public/Shashank_Tripathi_Resume.pdf` is the current source. All resume links use `public/resume.pdf`, an exact copy of the source. The sync script automatically detects the source filename: keep one source PDF in `public/` alongside the generated `resume.pdf`. Replace that source PDF and run:
+
+```sh
+npm run resume:sync
+```
+
+Development and production builds both synchronize it automatically. The original resume content is preserved.
+
+## Contact and deployment configuration
+
+Copy `.env.example` to `.env.local` and set `RESEND_API_KEY` to enable contact-form delivery. Set `CONTACT_FROM_EMAIL` to a sender on a verified Resend domain for production. The default Resend onboarding sender is for development and is subject to Resend's account restrictions. Email sends are validated, use a text body and reply-to address, and report provider failures accurately. With no API key, the page provides direct email links and the form reports its unavailable state.
+
+Set `NEXT_PUBLIC_SITE_URL` to the actual deployed origin (for example, `https://your-real-domain.example`). It is used for site metadata, robots, and the sitemap; no domain is invented when it is unset.
+
+Deploy as a normal Next.js application using a Node.js runtime. The `/api/contact` endpoint requires server execution, so a static-only export will not support the form.

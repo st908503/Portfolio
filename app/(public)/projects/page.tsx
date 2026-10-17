@@ -1,34 +1,7 @@
-"use client";
-
-import { useThemeContext } from "@/features/theme/theme-provider";
-import { PageContainer } from "@/components/layout/PageContainer";
-import { Section } from "@/components/layout/Section";
-import { FeaturedProject } from "@/components/projects/FeaturedProject";
-import { ProjectGrid } from "@/components/projects/ProjectGrid";
-
+import type { Metadata } from "next";
+import { ContactCTA, PageIntro } from "@/components/portfolio/Sections";
+import { ProjectExplorer } from "@/components/portfolio/ProjectExplorer";
+export const metadata: Metadata = { title: "Projects & Selected Work" };
 export default function ProjectsPage() {
-  const { theme } = useThemeContext();
-  const isDark = theme === "dark";
-
-  return (
-    <PageContainer>
-      <Section id="projects" title="Projects" eyebrow="Selected Work">
-        <p
-          className={`mb-10 max-w-3xl text-sm leading-relaxed ${
-            isDark ? "text-zinc-300" : "text-zinc-600"
-          }`}
-        >
-          A collection of systems I’ve designed and built across fintech,
-          payment processing, mobile engineering, and scalable frontend
-          architecture. My primary focus lies in secure transaction flows,
-          RBAC-based dashboards, and performance-optimized applications.
-        </p>
-
-        <FeaturedProject />
-        <div className="mt-20">
-          {/* <ProjectGrid /> */}
-        </div>
-      </Section>
-    </PageContainer>
-  );
+  return <><PageIntro eyebrow="PROJECTS & SELECTED WORK" title={<>Engineering for<br /><em>real operational complexity.</em></>} description="Professional contributions across government digital services, financial operations, cross-platform mobile features, and enterprise applications. Personal projects will join the collection as they’re ready." /><ProjectExplorer /><ContactCTA /></>;
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 
 import { useThemeContext } from "@/features/theme/theme-provider";
@@ -61,3 +62,6 @@ export function HighlightsGrid() {
     </section>
   );
 }
+=======
+export { Impact as HighlightsGrid } from "@/components/portfolio/Sections";
+>>>>>>> eaacee3 (updated resume)

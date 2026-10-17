@@ -1,60 +1,44 @@
 "use client";
-
 import Link from "next/link";
-import { useThemeContext } from "@/features/theme/theme-provider";
-import { PageContainer } from "./PageContainer";
-import { Navbar } from "./Navbar";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { navigation } from "@/lib/constants/navigation";
 import { ThemeToggle } from "./ThemeToggle";
-import { MobileNav } from "./MobileNav";
-import { cn } from '@/lib/utils/cn';
-import { motion } from "framer-motion";
-
 export function Header() {
-  const { theme } = useThemeContext();
-  const isDark = theme === 'dark';
-
-  return (
-    <motion.header 
-      className={cn(
-        "sticky top-0 z-50 border-b backdrop-blur-2xl transition-all duration-500",
-        isDark 
-          ? "border-zinc-900/50 bg-zinc-950/80 shadow-black/20" 
-          : "border-zinc-200/50 bg-white/80 shadow-lg shadow-zinc-200/50"
-      )}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      <PageContainer className="flex h-16 items-center justify-between gap-6 relative px-4">
-        {/* Left: Logo - Click to go to home */}
-        <div className="flex-shrink-0 cursor-pointer hover:scale-105 transition-transform duration-200">
-          <Link href="/">
-            <motion.span 
-              className={cn(
-                "font-black text-2xl tracking-tight bg-gradient-to-r",
-                isDark 
-                  ? "from-emerald-400 via-emerald-300 to-teal-400 bg-clip-text text-transparent shadow-emerald-400/25" 
-                  : "from-emerald-600 via-emerald-500 to-teal-600 bg-clip-text text-transparent shadow-emerald-500/30"
-              )}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              ST
-            </motion.span>
-          </Link>
-        </div>
-
-        {/* Center: Navbar */}
-        <div className="flex-1 flex justify-center max-w-md">
-          <Navbar />
-        </div>
-
-        {/* Right: Theme Toggle + Mobile */}
-        <div className="flex items-center gap-2 flex-shrink-0">
-          <ThemeToggle />
-          <MobileNav />
-        </div>
-      </PageContainer>
-    </motion.header>
-  );
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { setOpen(false); menuButton.current?.focus(); }
+    };
+    const outside = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+    document.addEventListener("keydown", close);
+    document.addEventListener("pointerdown", outside);
+    return () => { document.removeEventListener("keydown", close); document.removeEventListener("pointerdown", outside); };
+  }, [open]);
+  return <header className="site-header" ref={headerRef}>
+    <div className="container header-inner">
+      <Link href="/" className="brand" aria-label="Shashank Tripathi — home" onClick={() => setOpen(false)}>
+        <span className="brand-mark">ST</span>
+        <span className="brand-name">Shashank Tripathi<span>Frontend & Full Stack Engineer</span></span>
+      </Link>
+      <nav className="desktop-nav" aria-label="Main navigation">
+        {navigation.map(item => <Link key={item.href} href={item.href} aria-current={pathname.startsWith(item.href) ? "page" : undefined}>{item.label}</Link>)}
+      </nav>
+      <div className="header-actions">
+        <ThemeToggle />
+        <Link href="/contact" className="header-contact">Contact <ArrowUpRight size={16} /></Link>
+        <button ref={menuButton} className="icon-button menu-toggle" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen(!open)}>{open ? <X size={22} /> : <Menu size={22} />}</button>
+      </div>
+    </div>
+    {open && <nav id="mobile-navigation" className="mobile-navigation" aria-label="Mobile navigation">
+      {[{ label: "Home", href: "/" }, ...navigation, { label: "Contact", href: "/contact" }].map(item => <Link key={item.href} href={item.href} onClick={() => setOpen(false)} aria-current={pathname === item.href ? "page" : undefined}>{item.label}<ArrowUpRight size={18} /></Link>)}
+    </nav>}
+  </header>;
 }

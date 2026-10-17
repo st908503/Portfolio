@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prebuild": "node scripts/sync-resume.mjs",
+    "resume:sync": "node scripts/sync-resume.mjs",
+    "predev": "node scripts/sync-resume.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

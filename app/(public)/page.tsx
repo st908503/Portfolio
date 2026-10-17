@@ -1,13 +1,4 @@
-"use client";
-
-// import { PageContainer } from "@/components/layout/PageContainer";
-import { HeroSection } from "@/components/about/HeroSection";
-
+import { AboutSection, ContactCTA, ExperienceSection, Hero, Impact, ProjectsSection, SkillsSection } from "@/components/portfolio/Sections";
 export default function HomePage() {
-  return (
-    <>
-      <HeroSection />
-    </>
-  );
+  return <><Hero /><Impact /><ProjectsSection /><ExperienceSection /><AboutSection /><SkillsSection /><ContactCTA /></>;
 }
-
